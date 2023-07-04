@@ -8,6 +8,7 @@ import { Home } from './features/home/Home';
 import { ListCategory } from './features/categories/ListCategory';
 import { CreateCategory } from './features/categories/CreateCategory';
 import { EditCategory } from './features/categories/EditCategory';
+import { SideMenu } from './components/SideMenu';
 
 function App() {
   return <ThemeProvider theme={appTheme}>
@@ -35,7 +36,6 @@ function App() {
 
         </Routes>
       </Layout>
-
     </Box>
   </ThemeProvider>;
   

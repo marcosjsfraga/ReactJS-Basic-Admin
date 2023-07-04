@@ -1,7 +1,4 @@
-import { AppBar, Box, Button, IconButton, Typography, Toolbar } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Drawer, styled, useTheme } from '@mui/material';
-import { Home, FileOpen, AccessAlarm, ThreeDRotation } from '@mui/icons-material';
+import { IconButton, Drawer, styled, useTheme } from '@mui/material';
 import * as React from 'react';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -11,6 +8,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { Home, FileOpen, AccessAlarm, ThreeDRotation } from '@mui/icons-material';
+
 
 const drawerWidth = 240;
 
@@ -23,9 +22,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export function Header() {
+
+export function SideMenu() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -35,29 +35,8 @@ export function Header() {
     setOpen(false);
   };
 
-
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={handleDrawerOpen}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Basic Admin
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-
-      <Drawer
+    <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -77,8 +56,7 @@ export function Header() {
         </DrawerHeader>
         <Divider />
         <List>
-          {/* HOME */}
-          <ListItem key='/' disablePadding>
+          <ListItem key='Home' disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <Home />
@@ -86,8 +64,7 @@ export function Header() {
               <ListItemText primary='Home' />
             </ListItemButton>
           </ListItem>
-          {/* FILES */}
-          <ListItem key='category/create' disablePadding>
+          <ListItem key='Files' disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <FileOpen />
@@ -95,21 +72,10 @@ export function Header() {
               <ListItemText primary='Files' />
             </ListItemButton>
           </ListItem>
-          {/* FILES */}
-          <ListItem key='Save' disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <FileOpen />
-              </ListItemIcon>
-              <ListItemText primary='Save' />
-            </ListItemButton>
-          </ListItem>
 
         </List>
         <Divider />
 
     </Drawer>
-
-    </Box>
   )
 }
